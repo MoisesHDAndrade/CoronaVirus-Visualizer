@@ -1,6 +1,4 @@
-
 {% extends 'base.html' %}
-{% load mFilters %}
 {% block main %}
 <div class="text-center">{% include 'messages.html' %}</div>
 
@@ -27,7 +25,7 @@
 				<tr class="zoom">
 					<th><a class="" href="{% url 'covid:search' %}?termo={{chave}}">{{chave}}</a></strong></th>
 					<td>{{valor.75.confirmed}}</td>
-					<td class="">{{valor.75.recovered}}</td>
+					<td>{{valor.75.recovered}}</td>
 					<td class="bg-danger text-light">{{valor.75.deaths}}</td>	
 				</tr>
 			

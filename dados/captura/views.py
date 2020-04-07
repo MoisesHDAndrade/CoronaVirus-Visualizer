@@ -12,13 +12,15 @@ def visualiza(request):
     total_confirmed = []
     total_deaths = []
     total_recovered = []
+    last_index = []
     for item in retorno.values():
+        last_index.append(item[-1])
         total_confirmed.append(item[-1]['confirmed'])
         total_deaths.append(item[-1]['deaths'])
         total_recovered.append(item[-1]['recovered'])
     total = {'confirmed': sum(total_confirmed),
-             'deaths': sum(total_deaths), 'recovered': sum(total_recovered)}
-    return render(request, 'covid.html', {'obj': retorno, 'total': total})
+             'deaths': sum(total_deaths), 'recovered': sum(total_recovered), }
+    return render(request, 'covid.html', {'obj': retorno, 'total': total, 'last_index':last_index } )
 
 
 def search_corona(request):
