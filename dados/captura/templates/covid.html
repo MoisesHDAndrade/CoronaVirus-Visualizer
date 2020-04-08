@@ -24,9 +24,9 @@
 				
 				<tr class="zoom">
 					<th><a class="" href="{% url 'covid:search' %}?termo={{chave}}">{{chave}}</a></strong></th>
-					<td>{{valor.75.confirmed}}</td>
-					<td>{{valor.75.recovered}}</td>
-					<td class="bg-danger text-light">{{valor.75.deaths}}</td>	
+					<td>{{valor.confirmed}}</td>
+					<td>{{valor.recovered}}</td>
+					<td class="bg-danger text-light">{{valor.deaths}}</td>	
 				</tr>
 			
 				{% endfor %}
