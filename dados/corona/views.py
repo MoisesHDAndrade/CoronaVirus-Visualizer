@@ -3,7 +3,7 @@ from django.contrib import messages
 import requests
 import json
 from googlesearch import search
-
+from itertools import groupby
 
 def visualiza(request):
     url = 'https://pomber.github.io/covid19/timeseries.json'
@@ -20,7 +20,7 @@ def visualiza(request):
         total_confirmed.append(item[-1]['confirmed'])
         total_deaths.append(item[-1]['deaths'])
         total_recovered.append(item[-1]['recovered'])
-
+    
     for key in retorno.keys():
         atual[key] = last_index[contador]
         contador +=1
@@ -44,8 +44,9 @@ def search_corona(request):
         dicionario = retorno[termo]
         info = dicionario[-1]
         try:
-            for resultados in search(f'"{termo} corona virus" nws', stop=3):
-                noticia.append(resultados)
+            [noticia.append(resultados) for resultados in search(f'"{termo} corona virus" nws', stop=3)]
+            # for resultados in search(f'"{termo} corona virus" nws', stop=3):
+            #     noticia.append(resultados)
         except Exception as e:
             print('Error'+str(e))
 
