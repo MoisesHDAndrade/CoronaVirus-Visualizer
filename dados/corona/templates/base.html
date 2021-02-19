@@ -52,26 +52,10 @@
     font-weight:300
 }
 
-.table-responsive{
-    overflow: scroll;
-}
-
-.zoom:hover{
-    /* transform: scale(1.1);
-    z-index: 1;
-    font-size: 1.5rem;
-    align-items: center; */
-}
-
 tbody{
     text-decoration: none;
 }
 </style>
-
-{% block css %}
-    
-{% endblock css %}
-    
 </head>
 <body>
 	<nav class="navbar  navbar-light navbar-expand-lg nav-color-bg ">
@@ -88,17 +72,8 @@ tbody{
         </div>
 	</nav>
 	<div class="container">
-        {% block main %}
-            
-
-        {% endblock main %}
-	</div>
-
-    
-    {% block js %}
-        
-    {% endblock js %}
-        
+        {% block main %}{% endblock main %}
+	</div>   
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.min.js"></script>
@@ -107,6 +82,3 @@ tbody{
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
 </html>
-
-
-

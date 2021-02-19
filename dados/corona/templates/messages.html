@@ -1,10 +1,7 @@
-    
-    {% if messages %}
+  {% if messages %}
         {% for message in messages  %}
           <div id="django-message" class="alert {{message.tags}} mt-3" role="alert">
              {{message}}
           </div>
         {% endfor %}
-    {% endif %}
-
-    
+    {% endif %}  
