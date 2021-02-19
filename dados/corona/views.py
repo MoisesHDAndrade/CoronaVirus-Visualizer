@@ -17,6 +17,7 @@ def visualiza(request):
     contador = 0
     for item in retorno.values():
         last_index.append(item[-1])
+        
         total_confirmed.append(item[-1]['confirmed'])
         total_deaths.append(item[-1]['deaths'])
         total_recovered.append(item[-1]['recovered'])
@@ -24,10 +25,37 @@ def visualiza(request):
     for key in retorno.keys():
         atual[key] = last_index[contador]
         contador +=1
+    
+    ordered_by_confirmed_cases = ((valor for  valor in sorted(atual.items(), key=lambda item:item[1]['confirmed'], reverse=True)))
+    ordered_by_confirmed_deaths = ((valor for  valor in sorted(atual.items(), key=lambda item:item[1]['deaths'], reverse=True)))
+    ordered_by_confirmed_recovered = ((valor for  valor in sorted(atual.items(), key=lambda item:item[1]['recovered'], reverse=True)))
+    
+    
+   
+    
     total = {'confirmed': sum(total_confirmed),
              'deaths': sum(total_deaths), 'recovered': sum(total_recovered), }
-    return render(request, 'covid.html', {'obj': atual, 'total': total,} )
+    cases = {'cases': atual, 'total': total}
+    return cases
 
+def alphabetic_order(request):
+    cases = visualiza(request)
+    return render(request, 'covid.html', {'obj':cases})
+
+def ordered_deaths(request):
+    cases = visualiza(request)
+    ordered_by_confirmed_deaths = (valor for  valor in sorted(cases['cases'].items(), key=lambda item:item[1]['deaths'], reverse=True))
+    return render(request, 'cases.html', {'obj':ordered_by_confirmed_deaths})
+
+def ordered_confirmed(request):
+    cases = visualiza(request)
+    ordered_by_confirmed_cases = (valor for  valor in sorted(cases['cases'].items(), key=lambda item:item[1]['confirmed'], reverse=True))
+    return render(request, 'cases.html', {'obj':ordered_by_confirmed_cases})
+
+def ordered_recovered(request):
+    cases = visualiza(request)
+    ordered_by_recovered = (valor for  valor in sorted(cases['cases'].items(), key=lambda item:item[1]['recovered'], reverse=True))
+    return render(request, 'cases.html', {'obj':ordered_by_recovered})
 
 def search_corona(request):
     url = 'https://pomber.github.io/covid19/timeseries.json'
@@ -50,5 +78,5 @@ def search_corona(request):
         except Exception as e:
             print('Error'+str(e))
 
-    print(noticia)
+    
     return render(request, 'search.html', {'obj': termo, 'info': info, 'noticias': noticia})

@@ -1,29 +1,41 @@
 {% extends 'base.html' %}
 {% block main %}
+
+
+{% block css %}
+<style>
+	
+</style>
+	
+{% endblock css %}
+	
 <div class="text-center">{% include 'messages.html' %}</div>
 
 <table class="table table-responsive-xl table-hover">
 			<thead class="sticky-top">
 				<tr class="">
+					
 					<th>Pais</th>
-					<th class="emoji-head">🤒</th>
-					<th class="emoji-head">😀</th>
-					<th class="emoji-head">💀</th>
+					<th class="emoji-head"><a class="text-decoration-none text-reset" href="{% url 'covid:cases' %}">🤒</a> </th>
+					<th class="emoji-head"><a class="text-decoration-none text-reset" href="{% url 'covid:recovered' %}">😀</a> </th>
+					<th class="emoji-head "><a class="text-decoration-none text-reset" href="{% url 'covid:deaths' %}">💀</a> </th>
 				</tr>
 			</thead>
 			<tbody>
 
 				<tr class="">
-					<th><a href="">World</a></th>
-					<td>{{total.confirmed}}</td>
-					<td>{{total.recovered}}</td>
-					<td class="bg-danger text-light">{{total.deaths}}</td>
+					
+					<th><a class="text-decoration-none" href="">World</a></th>
+					<td>{{obj.total.confirmed}}</td>
+					<td>{{obj.total.recovered}}</td>
+					<td class="bg-danger text-light">{{obj.total.deaths}}</td>
 				</tr>
 				
-				{%  for chave, valor in obj.items %}
+				{%  for chave, valor in obj.cases.items %}
 				
 				<tr class="zoom">
-					<th><a class="" href="{% url 'covid:search' %}?termo={{chave}}">{{chave}}</a></strong></th>
+					
+					<th><a class="text-decoration-none" href="{% url 'covid:search' %}?termo={{chave}}">{{chave}}</a></strong></th>
 					<td>{{valor.confirmed}}</td>
 					<td>{{valor.recovered}}</td>
 					<td class="bg-danger text-light">{{valor.deaths}}</td>	

@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Raleway:400,800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <title>Corona Virus Visualizer</title>
 <style>
 *{
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400
+    font-weight: lighter;
 }
 
 .nav-color-bg{
@@ -51,20 +49,18 @@
 }
 .emoji-head{
     font-size: 2rem;
+    font-weight:300
 }
 
 .table-responsive{
     overflow: scroll;
 }
-.zoom{
-
-}
 
 .zoom:hover{
-    transform: scale(0.9);
+    /* transform: scale(1.1);
     z-index: 1;
     font-size: 1.5rem;
-    align-items: center;
+    align-items: center; */
 }
 
 tbody{
@@ -72,12 +68,16 @@ tbody{
 }
 </style>
 
+{% block css %}
+    
+{% endblock css %}
+    
 </head>
 <body>
-	<nav class="navbar  navbar-light navbar-expand-lg nav-color-bg sticky-top">
+	<nav class="navbar  navbar-light navbar-expand-lg nav-color-bg ">
 		<div class="container-fluid">
-            <span><img class="img-logo m-3"  src="https://i.ibb.co/VMVRNwG/Coronavirus-Germs-PNG-File.png" alt="Coronavirus-Germs-PNG-File" border="0"></span>
-			<a href="{% url 'covid:index' %}"class="navbar-brand text-light nav-font-size">Corona<span class="span-logo">Virus</span></a>
+            <span><img class="img-logo m-3"  src="https://i.ibb.co/VMVRNwG/Coronavirus-Germs-PNG-File.png" alt="Coronavirus-Germs-PNG-File" ></span>
+			<a href="{% url 'covid:alphabetic' %}"class="navbar-brand text-light nav-font-size">Corona<span class="span-logo">Virus</span></a>
 		</div> 
 		<div class="container-fluid">
             <form class=" form-inline mt-3 mb-3 nav-search "  action="{% url 'covid:search' %}">
@@ -94,11 +94,19 @@ tbody{
         {% endblock main %}
 	</div>
 
+    
+    {% block js %}
+        
+    {% endblock js %}
+        
 </body>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.min.js"></script>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
 </html>
+
+
+

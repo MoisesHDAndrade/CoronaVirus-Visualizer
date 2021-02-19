@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="text-center">{% include 'messages.html' %}</div>
+
+<table class="table table-responsive-xl table-hover">
+			<thead class="sticky-top">
+				<tr class="">
+                    <th>#</th>
+					<th>Pais</th>
+					<th class="emoji-head font-weight-light {%if 'cases' in request.path%}bg-warning text-dark{%endif%}"> <a class="text-decoration-none text-reset" href="{% url 'covid:cases' %}">🤒</a></th>
+					<th class="emoji-head font-weight-light {%if 'recovered' in request.path%}bg-success text-white{%endif%}"><a class="text-decoration-none text-reset" href="{% url 'covid:recovered' %}">😀</a></th>
+					<th class="emoji-head font-weight-light {%if 'deaths' in request.path%}bg-dark text-white{%endif%}"><a class="text-decoration-none text-reset" href="{% url 'covid:deaths' %}">💀</a></th>
+				</tr>
+			</thead>
+			<tbody>
+                
+				{%  for chave, valor in obj %}
+				<tr class="zoom">
+                    <th>{{forloop.counter}}</th>
+					<th><a class="text-decoration-none" href="{% url 'covid:search' %}?termo={{chave}}">{{chave}}</a></strong></th>
+					<td class="">{{valor.confirmed}}</td>
+					<td>{{valor.recovered}}</td>
+					<td class="bg-danger text-light">{{valor.deaths}}</td>	
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+{% endblock main %}
