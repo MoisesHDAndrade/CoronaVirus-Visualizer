@@ -26,13 +26,6 @@ def visualiza(request):
         atual[key] = last_index[contador]
         contador +=1
     
-    ordered_by_confirmed_cases = ((valor for  valor in sorted(atual.items(), key=lambda item:item[1]['confirmed'], reverse=True)))
-    ordered_by_confirmed_deaths = ((valor for  valor in sorted(atual.items(), key=lambda item:item[1]['deaths'], reverse=True)))
-    ordered_by_confirmed_recovered = ((valor for  valor in sorted(atual.items(), key=lambda item:item[1]['recovered'], reverse=True)))
-    
-    
-   
-    
     total = {'confirmed': sum(total_confirmed),
              'deaths': sum(total_deaths), 'recovered': sum(total_recovered), }
     cases = {'cases': atual, 'total': total}
